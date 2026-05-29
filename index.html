@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapport Atelier PHARES — Lomé 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,500;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#F3EDE3;--rust:#B04018;--dark:#17130F;
+  --mid:#7B7168;--border:#DDD5C8;--card:#FAF6F0;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+html{background:var(--cream)}
+body{font-family:var(--sans);font-size:14px;color:var(--dark);background:var(--cream);-webkit-font-smoothing:antialiased}
+
+/* ── STICKY HEADER ────────────────────────────────── */
+.top{position:sticky;top:0;z-index:100;background:var(--cream);border-bottom:1px solid var(--border);height:46px;display:flex;align-items:center;justify-content:space-between;padding:0 60px}
+.top-l{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dark)}
+.top-r{font-size:11px;font-weight:400;color:var(--mid);letter-spacing:.04em}
+.dot{color:var(--border);margin:0 8px}
+
+/* ── WRAPPER ──────────────────────────────────────── */
+.wrap{max-width:920px;margin:0 auto;padding:0 60px 120px}
+
+/* ── COVER ────────────────────────────────────────── */
+.cover{padding:80px 0 72px;border-bottom:1px solid var(--border);margin-bottom:64px}
+.cover-tag{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--rust);margin-bottom:14px}
+.cover-h{font-family:var(--serif);font-size:64px;font-weight:900;line-height:1.04;color:var(--dark);margin-bottom:22px;letter-spacing:-.025em;max-width:700px}
+.cover-h em{font-style:italic;color:var(--rust)}
+.cover-sub{font-size:15px;font-weight:300;color:var(--mid);line-height:1.7;max-width:560px;margin-bottom:56px}
+.cover-meta{display:flex;gap:0;flex-wrap:wrap;padding-top:28px;border-top:1px solid var(--border)}
+.cm{padding-right:40px}
+.cm strong{display:block;font-size:13px;font-weight:600;color:var(--dark);margin-bottom:2px}
+.cm span{font-size:11px;font-weight:400;color:var(--mid);letter-spacing:.02em}
+
+/* ── TABLE OF CONTENTS ────────────────────────────── */
+.toc{margin-bottom:64px;padding:32px 36px;background:var(--card);border:1px solid var(--border)}
+.toc-title{font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);margin-bottom:20px}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.toc-item{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--border)}
+.toc-item:last-child{border-bottom:none}
+.toc-link{font-size:13px;font-weight:400;color:var(--dark);text-decoration:none}
+.toc-link:hover{color:var(--rust)}
+.toc-num{font-size:11px;font-weight:600;color:var(--rust);margin-right:10px}
+
+/* ── SECTION STRUCTURE ────────────────────────────── */
+.rs{margin-bottom:72px}
+.rs+.rs{padding-top:64px;border-top:1px solid var(--border)}
+
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.eyebrow::before{content:'';display:block;width:28px;height:2px;background:var(--rust);flex-shrink:0}
+.eyebrow span{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}
+.badge{display:inline-flex;align-items:center;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--rust);padding:5px 12px;border-radius:2px;margin-bottom:16px}
+
+h2.stitle{font-family:var(--serif);font-size:38px;font-weight:700;line-height:1.12;color:var(--dark);margin-bottom:8px;letter-spacing:-.015em}
+h2.stitle em{font-style:italic;color:var(--rust)}
+.rule{width:100%;height:1px;background:var(--border);margin:20px 0 24px}
+
+h3.ss{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--dark);margin:36px 0 12px;line-height:1.2}
+h3.ss em{font-style:italic;color:var(--rust)}
+h4.sub{font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin:24px 0 10px}
+
+/* ── BODY TEXT ────────────────────────────────────── */
+p.bt,p{font-size:14px;font-weight:300;color:var(--dark);line-height:1.78;margin-bottom:16px}
+p strong{font-weight:600}
+
+/* ── GRIDS ────────────────────────────────────────── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:28px 48px;margin:20px 0}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px 32px;margin:20px 0}
+.g2c{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin:20px 0}
+
+/* ── NUMBERED ITEMS ───────────────────────────────── */
+.ni .n{font-size:10px;font-weight:600;color:var(--rust);letter-spacing:.1em;margin-bottom:7px}
+.ni h3{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--dark);margin-bottom:7px;line-height:1.25}
+.ni p{font-size:13px;font-weight:300;color:var(--mid);line-height:1.65;margin-bottom:0}
+
+/* ── TABLE ────────────────────────────────────────── */
+.tbl-wrap{overflow-x:auto;margin:16px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);padding:9px 12px;border-bottom:2px solid var(--border);text-align:left;white-space:nowrap}
+td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--dark);line-height:1.45;font-weight:300;vertical-align:top}
+tr:last-child td{border-bottom:none}
+td strong{font-weight:600}
+.sv{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
+.sv-g{background:#D5EDDA;color:#1A5C2A}.sv-y{background:#FFF2CA;color:#7A5500}
+.sv-o{background:#FFE0C0;color:#7D3800}.sv-r{background:#FFCECB;color:#7D0000}
+
+/* ── BLOCKQUOTE ───────────────────────────────────── */
+blockquote{font-family:var(--serif);font-size:17px;font-weight:400;font-style:italic;color:var(--dark);line-height:1.6;padding:0 0 0 24px;border-left:3px solid var(--rust);margin:24px 0}
+blockquote cite{display:block;font-size:10px;font-style:normal;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-top:10px}
+
+/* ── BULLET LIST ──────────────────────────────────── */
+.rl{margin:12px 0}
+.ri{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.ri:last-child{border-bottom:none}
+.rn{font-size:10px;font-weight:700;color:var(--rust);flex-shrink:0;min-width:24px;padding-top:2px;letter-spacing:.06em}
+.rt{font-size:13px;font-weight:300;color:var(--dark);line-height:1.55}
+.rt strong{font-weight:600}
+
+/* ── ABBREV ───────────────────────────────────────── */
+.ag{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+.ai{display:flex;gap:14px;padding:7px 0;border-bottom:1px solid var(--border);align-items:baseline}
+.ak{font-size:11px;font-weight:700;color:var(--rust);min-width:80px;flex-shrink:0}
+.av{font-size:12.5px;font-weight:300;color:var(--dark);line-height:1.4}
+
+/* ── CHAIN ────────────────────────────────────────── */
+.chain{display:flex;align-items:center;flex-wrap:wrap;gap:0;margin:16px 0}
+.cs{background:var(--card);border:1px solid var(--border);padding:7px 14px;font-size:12px;font-weight:500;color:var(--dark)}
+.ca{width:0;height:0;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:10px solid var(--rust);flex-shrink:0}
+
+/* ── STAT INLINE ──────────────────────────────────── */
+.stats-row{display:flex;gap:0;margin:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat-cell{padding:20px 32px 20px 0;margin-right:32px;border-right:1px solid var(--border)}
+.stat-cell:last-child{border-right:none}
+.sn{font-family:var(--serif);font-size:44px;font-weight:900;color:var(--dark);line-height:1}
+.sn em{font-style:normal;color:var(--rust)}
+.sl{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-top:5px}
+
+/* ── CARD ─────────────────────────────────────────── */
+.card{background:var(--card);border:1px solid var(--border);padding:18px 20px;margin:16px 0}
+.card-t{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.card p{font-size:13px;font-weight:300;color:var(--mid);line-height:1.6;margin-bottom:0}
+
+/* ── FOCAL CARDS ──────────────────────────────────── */
+.fg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.fc{background:var(--card);border:1px solid var(--border);padding:14px 16px}
+.fc-c{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
+.fc-i{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--rust)}
+
+/* ── RECO BLOCK ───────────────────────────────────── */
+.reco{display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.reco:last-child{border-bottom:none}
+.reco-n{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--rust);flex-shrink:0;min-width:32px;line-height:1}
+.reco-t{font-size:13.5px;font-weight:300;color:var(--dark);line-height:1.55}
+.reco-t strong{font-weight:600}
+
+/* ── SEPARATOR ────────────────────────────────────── */
+.sep-day{display:flex;align-items:center;gap:16px;margin:48px 0 32px;padding-top:48px;border-top:2px solid var(--dark)}
+.sep-day-label{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--dark);white-space:nowrap}
+.sep-day-label em{font-style:italic;color:var(--rust)}
+.sep-day-date{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+.sep-day::after{content:'';flex:1;height:1px;background:var(--border)}
+
+code{font-family:ui-monospace,monospace;font-size:11.5px;background:var(--border);padding:2px 7px;border-radius:2px;color:var(--dark)}
+
+/* ── NOTE BOX ─────────────────────────────────────── */
+.note{border-left:3px solid var(--rust);padding:12px 16px;background:var(--card);margin:16px 0;font-size:13px;font-weight:300;color:var(--mid);line-height:1.6}
+.note strong{color:var(--dark);font-weight:600}
+
+/* ── PRINT / FOOTER ───────────────────────────────── */
+.doc-footer{margin-top:80px;padding-top:24px;border-top:2px solid var(--dark);display:flex;justify-content:space-between;align-items:baseline}
+.doc-footer-l{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--dark)}
+.doc-footer-r{font-size:11px;font-weight:400;color:var(--mid)}
+
+/* ── COVER LAYOUT ─────────────────────────────────── */
+.cover-top{display:flex;gap:36px;align-items:flex-start}
+.cover-left{flex:1;min-width:0}
+
+/* ── IMAGE UPLOAD ZONES ───────────────────────────── */
+.img-zone{position:relative;cursor:pointer;display:block;outline:none}
+.img-zone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;width:100%;height:100%}
+.img-ph{border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:var(--card);transition:border-color .2s,background .2s;border-radius:2px;text-align:center;padding:16px}
+.img-zone:hover .img-ph,.img-zone:focus-within .img-ph{border-color:var(--rust);background:#F5EDE0}
+.img-ph-icon{width:36px;height:36px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;color:var(--mid);flex-shrink:0}
+.img-ph-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.img-ph-hint{font-size:11px;font-weight:300;color:var(--border)}
+.img-preview{width:100%;display:none;border-radius:2px;object-fit:contain;background:var(--card);cursor:pointer}
+.img-opt{font-size:10px;font-weight:400;color:var(--mid);margin-bottom:8px;letter-spacing:.04em;font-style:italic}
+/* Logo zone */
+.logo-zone{width:154px;flex-shrink:0;margin-top:4px}
+.logo-zone .img-ph{height:108px}
+.logo-zone .img-preview{max-height:108px;object-fit:contain;background:var(--card);padding:8px}
+/* Cover photo */
+.cover-photo-zone{margin-top:28px}
+.cover-photo-zone .img-ph{height:300px}
+.cover-photo-zone .img-preview{max-height:none;width:100%}
+/* Day photo */
+.day-photo-zone{margin-bottom:32px}
+.day-photo-zone .img-ph{height:220px}
+.day-photo-zone .img-preview{max-height:none;width:100%}
+
+/* ── PRINT BUTTON ─────────────────────────────────── */
+.print-btn{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--dark);color:var(--cream);border:none;padding:7px 16px;cursor:pointer;border-radius:2px;transition:background .2s;white-space:nowrap;flex-shrink:0;margin-left:20px}
+.print-btn:hover{background:var(--rust)}
+
+
+/* ── PDF BUTTON LOADING STATE ────────────────────────────── */
+.print-btn:disabled{opacity:.6;cursor:not-allowed}
+
+/* ── PAGE BREAK HINTS FOR PDF ────────────────────────────── */
+.card,.tbl-wrap,.stats-row,.chain,.g2,.g3,.g2c,.fg,.rl,.reco,.ag{
+  break-inside:avoid;page-break-inside:avoid
+}
+blockquote,.ni,tr{break-inside:avoid;page-break-inside:avoid}
+/* Keep TOC on one page */
+.toc{break-inside:avoid;page-break-inside:avoid}
+/* Keep every row/item together */
+.ri,.ai,.reco,.cm,.stat-cell,.fc{break-inside:avoid;page-break-inside:avoid}
+/* Prevent paragraph text from being sliced mid-line */
+p,.bt{break-inside:avoid;page-break-inside:avoid}
+/* Keep headings glued to the content that follows */
+h2.stitle,h3.ss,h4.sub{break-after:avoid;page-break-after:avoid}
+/* Keep eyebrow+title together with the rule */
+.eyebrow{break-after:avoid;page-break-after:avoid}
+.rule{break-before:avoid;page-break-before:avoid}
+
+/* ── PRINT INSTRUCTION MODAL ──────────────────────────── */
+#print-modal{position:fixed;inset:0;z-index:9999;background:rgba(23,19,15,.72);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center}
+.pm-box{background:var(--cream);border:1px solid var(--border);padding:40px 48px;max-width:440px;width:92%}
+.pm-box h3{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--dark);margin-bottom:14px}
+.pm-box > p{font-size:14px;font-weight:300;color:var(--mid);line-height:1.65;margin-bottom:0}
+.pm-steps{margin:18px 0 28px;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+.pm-steps li{font-size:14px;font-weight:300;color:var(--dark);line-height:1.55;list-style:decimal}
+.pm-steps li strong{font-weight:600}
+.pm-steps li em{font-style:italic;color:var(--mid)}
+.pm-btns{display:flex;gap:10px}
+.pm-go{font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:var(--dark);color:var(--cream);border:none;padding:9px 20px;cursor:pointer;border-radius:2px}
+.pm-go:hover{background:var(--rust)}
+.pm-cancel{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--mid);border:1px solid var(--border);padding:9px 16px;cursor:pointer;border-radius:2px}
+.pm-cancel:hover{color:var(--dark);border-color:var(--dark)}
+
+/* ── @MEDIA PRINT ────────────────────────────────────── */
+@media print{
+  @page{size:A4 portrait;margin:14mm 16mm 18mm}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;color-adjust:exact !important}
+
+  /* Hide non-print elements */
+  .top,.print-btn,.img-opt,#print-modal{display:none !important}
+  .img-zone input[type=file]{display:none !important}
+  .img-zone:not(.has-image){display:none !important}
+  .img-zone.has-image .img-ph{display:none !important}
+  .img-zone.has-image .img-preview{display:block !important;width:100% !important;max-height:none !important;object-fit:contain}
+  [data-replit-badge],[aria-label="Made with Replit"],iframe{display:none !important}
+
+  /* Layout */
+  html,body{width:100% !important;background:var(--cream) !important;font-size:11px}
+  .wrap{max-width:100% !important;width:100% !important;padding:0 !important;margin:0 !important}
+  .cover-h,.cover-sub,.cover-top,.cover-meta{max-width:none !important;width:100% !important}
+
+  /* Typography */
+  .cover-h{font-size:42px !important;line-height:1.08 !important}
+  h2.stitle{font-size:26px !important}
+  h3.ss{font-size:16px !important;margin:20px 0 8px !important}
+  .sn{font-size:30px !important}
+  p,td,li,.rt,.av,.bt{font-size:11px !important}
+  th{font-size:8.5px !important}
+
+  /* Forced page breaks */
+  .cover{padding:40px 0 32px !important;break-after:page;page-break-after:always}
+  .toc{break-after:page;page-break-after:always}
+  .sep-day{break-before:page;page-break-before:always}
+
+  /* Headings glued to the content that follows */
+  h2.stitle,h3.ss,h4.sub,.eyebrow,.rule,.badge{break-after:avoid;page-break-after:avoid}
+
+  /* Keep atomic units together */
+  .card,.tbl-wrap,.note,blockquote,.stats-row,.chain,
+  .g2,.g3,.g2c,.fg,.rl,.ag,
+  .ni,tr,.ri,.ai,.reco,.cm,.stat-cell,.fc{break-inside:avoid;page-break-inside:avoid}
+  p,.bt{break-inside:avoid;page-break-inside:avoid}
+  .toc{break-inside:avoid;page-break-inside:avoid}
+
+  /* Misc */
+  a{color:inherit;text-decoration:none}
+  .rs+.rs{padding-top:32px}
+  .doc-footer{margin-top:40px}
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY HEADER -->
+<header class="top">
+  <span class="top-l">AGRHYMET<span class="dot">·</span>SMHI</span>
+  <span class="top-r">Atelier PHARES<span class="dot">·</span>19–22 mai 2026<span class="dot">·</span>Lomé, Togo</span>
+  <div style="display:flex;gap:8px;margin-left:20px">
+    <a href="presentation.html" style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--dark);border:1px solid var(--border);padding:7px 14px;text-decoration:none;border-radius:2px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px" onmouseover="this.style.borderColor='var(--rust)';this.style.color='var(--rust)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--dark)'">▶ Présentation</a>
+    <button class="print-btn" id="pdf-btn" onclick="downloadPDF()">↓ Exporter PDF</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ── COVER ──────────────────────────────────────────── -->
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-left">
+        <div class="cover-tag">Rapport officiel · Mali Météo / AGRHYMET / SMHI</div>
+        <h1 class="cover-h">Atelier de formation<br>des utilisateurs de la<br>plateforme <em>PHARES</em></h1>
+        <p class="cover-sub">Atelier régional de formation sur la plateforme hydroclimatique multisystèmes de prévision et d'alerte précoce pour la résilience des écosystèmes et des sociétés — Lomé, Togo, 19–22 mai 2026.</p>
+      </div>
+      <div>
+        <label class="img-zone logo-zone" data-id="logo-malimeteo" title="Charger le logo Mali Météo">
+          <input type="file" accept="image/*">
+          <div class="img-ph">
+            <div class="img-ph-icon">+</div>
+            <div class="img-ph-label">Logo Mali Météo</div>
+            <div class="img-ph-hint">Cliquez pour charger</div>
+          </div>
+          <img class="img-preview" alt="Logo Mali Météo">
+        </label>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div class="cm"><strong>Lomé, Togo</strong><span>Lieu</span></div>
+      <div class="cm"><strong>19 – 22 mai 2026</strong><span>Dates</span></div>
+      <div class="cm"><strong>4 jours · 8 pays</strong><span>Durée &amp; portée</span></div>
+      <div class="cm"><strong>Sidibé Allaye Yoro</strong><span>Rédacteur</span></div>
+      <div class="cm"><strong>Agence Nationale de la Météorologie</strong><span>Mali Météo — Bamako, Mali</span></div>
+    </div>
+    <label class="img-zone cover-photo-zone" data-id="photo-groupe" title="Charger une photo de l'atelier">
+      <input type="file" accept="image/*">
+      <div class="img-ph">
+        <div class="img-ph-icon">+</div>
+        <div class="img-ph-label">Photo de l'atelier — Photo de groupe</div>
+        <div class="img-ph-hint">Cliquez pour charger une photo (JPG, PNG…)</div>
+      </div>
+      <img class="img-preview" alt="Photo de groupe atelier PHARES Lomé 2026">
+    </label>
+  </div>
+
+  <!-- ── TABLE DES MATIÈRES ─────────────────────────────── -->
+  <div class="toc">
+    <div class="toc-title">Table des matières</div>
+    <div class="toc-grid">
+      <div>
+        <div class="toc-item"><a class="toc-link" href="#sigles"><span class="toc-num">—</span>Sigles &amp; Abréviations</a></div>
+        <div class="toc-item"><a class="toc-link" href="#resume"><span class="toc-num">—</span>Résumé exécutif</a></div>
+        <div class="toc-item"><a class="toc-link" href="#intro"><span class="toc-num">1.</span>Introduction &amp; objectifs</a></div>
+        <div class="toc-item"><a class="toc-link" href="#j1"><span class="toc-num">2.</span>Journée 1 — 19 mai 2026</a></div>
+        <div class="toc-item"><a class="toc-link" href="#j2"><span class="toc-num">3.</span>Journée 2 — 20 mai 2026</a></div>
+      </div>
+      <div>
+        <div class="toc-item"><a class="toc-link" href="#j3"><span class="toc-num">4.</span>Journée 3 — 21 mai 2026</a></div>
+        <div class="toc-item"><a class="toc-link" href="#j4"><span class="toc-num">5.</span>Journée 4 — 22 mai 2026</a></div>
+        <div class="toc-item"><a class="toc-link" href="#recos"><span class="toc-num">6.</span>Synthèse des recommandations</a></div>
+        <div class="toc-item"><a class="toc-link" href="#enseign"><span class="toc-num">7.</span>Principaux enseignements</a></div>
+        <div class="toc-item"><a class="toc-link" href="#annexes"><span class="toc-num">—</span>Annexes</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIGLES ──────────────────────────────────────────── -->
+  <section class="rs" id="sigles">
+    <div class="eyebrow"><span>Glossaire</span></div>
+    <h2 class="stitle">Sigles &amp; <em>Abréviations</em></h2>
+    <div class="rule"></div>
+    <div class="ag">
+      <div class="ai"><span class="ak">AGRHYMET</span><span class="av">Centre Régional AGRHYMET</span></div>
+      <div class="ai"><span class="ak">API</span><span class="av">Interface de Programmation d'Application</span></div>
+      <div class="ai"><span class="ak">CHIRPS</span><span class="av">Climate Hazards Group InfraRed Precipitation with Station data</span></div>
+      <div class="ai"><span class="ak">CILSS</span><span class="av">Comité permanent Inter-États de Lutte contre la Sécheresse dans le Sahel</span></div>
+      <div class="ai"><span class="ak">DGRE</span><span class="av">Direction Générale des Ressources en Eau</span></div>
+      <div class="ai"><span class="ak">ECMWF</span><span class="av">Centre Européen pour les Prévisions Météorologiques à Moyen Terme</span></div>
+      <div class="ai"><span class="ak">FANFAR</span><span class="av">Système de Prévision et d'Alerte aux Inondations pour l'Afrique de l'Ouest</span></div>
+      <div class="ai"><span class="ak">FFGS</span><span class="av">Flash Flood Guidance System</span></div>
+      <div class="ai"><span class="ak">GEFS</span><span class="av">Global Ensemble Forecast System</span></div>
+      <div class="ai"><span class="ak">HYPE</span><span class="av">Hydrological Predictions for the Environment</span></div>
+      <div class="ai"><span class="ak">NSE</span><span class="av">Nash-Sutcliffe Efficiency (indice de performance des modèles)</span></div>
+      <div class="ai"><span class="ak">OMM</span><span class="av">Organisation Météorologique Mondiale</span></div>
+      <div class="ai"><span class="ak">PHARES</span><span class="av">Plateforme hydroclimatique multisystèmes de prévision et d'alerte précoce pour la résilience des écosystèmes et des sociétés</span></div>
+      <div class="ai"><span class="ak">RCC</span><span class="av">Centre Climatique Régional</span></div>
+      <div class="ai"><span class="ak">SMN</span><span class="av">Service Météorologique National</span></div>
+      <div class="ai"><span class="ak">SMHI</span><span class="av">Institut Suédois de Météorologie et d'Hydrologie</span></div>
+      <div class="ai"><span class="ak">WAS</span><span class="av">West Africa Services</span></div>
+      <div class="ai"><span class="ak">WRF</span><span class="av">Weather Research and Forecasting (modèle météorologique)</span></div>
+    </div>
+  </section>
+
+  <!-- ── RÉSUMÉ EXÉCUTIF ─────────────────────────────────── -->
+  <section class="rs" id="resume">
+    <div class="eyebrow"><span>Résumé exécutif</span></div>
+    <h2 class="stitle">L'essentiel en <em>quatre jours.</em></h2>
+    <div class="rule"></div>
+    <p>L'atelier régional de formation sur la plateforme PHARES s'est tenu à Lomé du 19 au 22 mai 2026. Organisé conjointement par le <strong>Centre Régional AGRHYMET</strong> et le <strong>SMHI</strong>, avec l'appui du projet Sahel Résilience (gouvernement suédois) et du Programme de Résilience du Système Alimentaire (Banque mondiale), l'atelier a réuni des représentants des Services météorologiques et hydrologiques nationaux, de la Croix-Rouge et des institutions partenaires des pays membres du CILSS et d'Afrique de l'Ouest.</p>
+    <p>Sur quatre jours, les participants ont progressé de la compréhension conceptuelle vers la maîtrise opérationnelle : navigation dans le portail de visualisation, utilisation des API (accès, extraction de données, formats NetCDF/GeoTIFF/CSV/JSON), analyse multi-modèles, génération de bulletins hydrologiques automatisés via scripts R et Git, et production de recommandations pour l'amélioration continue de la plateforme.</p>
+    <p>L'atelier s'est conclu par la mise en place d'un dispositif opérationnel post-formation : points focaux nationaux identifiés, groupe WhatsApp <strong>PHARES_Monitoring2026</strong> créé, calendrier de réunions hebdomadaires et mensuelles établi, et 13 recommandations techniques formalisées.</p>
+    <div class="stats-row">
+      <div class="stat-cell"><div class="sn">4</div><div class="sl">Jours de formation</div></div>
+      <div class="stat-cell"><div class="sn">8</div><div class="sl">Pays représentés</div></div>
+      <div class="stat-cell"><div class="sn"><em>13</em></div><div class="sl">Recommandations techniques</div></div>
+    </div>
+  </section>
+
+  <!-- ── 1. INTRODUCTION & OBJECTIFS ───────────────────────── -->
+  <section class="rs" id="intro">
+    <div class="eyebrow"><span>Section 1</span></div>
+    <h2 class="stitle">Introduction &amp; <em>Objectifs</em></h2>
+    <div class="rule"></div>
+    <p>L'atelier visait à renforcer les capacités techniques et opérationnelles des acteurs régionaux et nationaux dans l'utilisation des systèmes de prévision hydrologique et d'alerte précoce, notamment via la plateforme PHARES.</p>
+    <h4 class="sub">Objectifs spécifiques</h4>
+    <div class="g3">
+      <div class="ni"><div class="n">01</div><h3>Portail de visualisation</h3><p>Renforcer la prise en main du portail de visualisation PHARES par les utilisateurs nationaux.</p></div>
+      <div class="ni"><div class="n">02</div><h3>Accès aux données</h3><p>Maîtriser l'accès aux données via les portails web et les API (portail ouvert + accès restreint).</p></div>
+      <div class="ni"><div class="n">03</div><h3>Analyse &amp; interprétation</h3><p>Développer les capacités d'analyse et d'interprétation des prévisions hydrologiques multi-modèles.</p></div>
+      <div class="ni"><div class="n">04</div><h3>Bulletins automatisés</h3><p>Former à la production et diffusion de bulletins d'alerte automatisés par scripts R et Git.</p></div>
+      <div class="ni"><div class="n">05</div><h3>Évaluation des performances</h3><p>Évaluer les performances de la plateforme en vue de la saison des pluies 2026.</p></div>
+      <div class="ni"><div class="n">06</div><h3>Retours utilisateurs</h3><p>Collecter les retours des utilisateurs pour améliorer la plateforme en continu.</p></div>
+    </div>
+  </section>
+
+  <!-- ── 2. JOURNÉE 1 ────────────────────────────────────────── -->
+  <section class="rs" id="j1">
+    <div class="eyebrow"><span>Section 2</span></div>
+    <h2 class="stitle">Journée 1 — <em>19 mai 2026</em></h2>
+    <div class="rule"></div>
+    <p class="img-opt">Photo optionnelle — à ajouter si disponible</p>
+    <label class="img-zone day-photo-zone" data-id="photo-j1" title="Charger une photo de la journée 1">
+      <input type="file" accept="image/*">
+      <div class="img-ph">
+        <div class="img-ph-icon">+</div>
+        <div class="img-ph-label">Photo — Journée 1 · 19 mai 2026</div>
+        <div class="img-ph-hint">Cliquez pour charger une photo de cette journée</div>
+      </div>
+      <img class="img-preview" alt="Photo journée 1 — Atelier PHARES">
+    </label>
+
+    <h3 class="ss">2.1 Cérémonie d'ouverture</h3>
+    <div class="g3" style="margin-bottom:24px">
+      <div class="ni"><div class="n">AGRHYMET</div><h3>M. Mohamed Hamatan</h3><p>La recrudescence des phénomènes hydroclimatiques extrêmes, la variabilité climatique et l'urbanisation rapide accentuent la vulnérabilité des populations. PHARES est le fruit de la collaboration AGRHYMET–SMHI, financée par le gouvernement suédois (Sahel Résilience) et la Banque mondiale (FSRP). L'efficacité de l'outil dépend de la capacité des utilisateurs à l'exploiter.</p></div>
+      <div class="ni"><div class="n">SMHI</div><h3>Dr Jafet Andersson</h3><p>Plus de 15 ans de coopération régionale ayant permis la collecte de données, le développement de modèles hydrologiques et la mise en place de systèmes opérationnels. PHARES est une solution cloud robuste, évolutive et accessible. Appel à faire de l'atelier un cadre d'action collective et de coopération régionale.</p></div>
+      <div class="ni"><div class="n">DGRE Togo</div><h3>Directeur DGRE</h3><p>Bienvenue aux participants. L'atelier vise à harmoniser les compétences sur l'acquisition des données, l'analyse des prévisions, la communication des alertes et les systèmes d'évaluation des performances.</p></div>
+    </div>
+
+    <h3 class="ss">2.2 Session 1 — Prévision des inondations et systèmes d'alerte précoce</h3>
+    <p><em>Présentateur : Arsène (Expert AGRHYMET)</em></p>
+    <p>La prévision des inondations est un processus consistant à prévoir les débits et crues, identifier les zones susceptibles d'être touchées, évaluer la sévérité des événements et estimer leur extension spatiale avant la survenue de l'aléa.</p>
+
+    <h4 class="sub">Chaîne de prévision opérationnelle</h4>
+    <div class="chain"><span class="cs">Prévisions météorologiques</span><span class="ca"></span><span class="cs">Modèles hydrologiques</span><span class="ca"></span><span class="cs">Plateformes de visualisation</span><span class="ca"></span><span class="cs">Diffusion des alertes</span><span class="ca"></span><span class="cs">Prise de décision</span></div>
+
+    <blockquote>Les prévisionnistes fournissent l'information technique ; les décisions d'évacuation relèvent des autorités compétentes.</blockquote>
+
+    <h4 class="sub">Défis majeurs identifiés</h4>
+    <div class="rl">
+      <div class="ri"><span class="rn">—</span><span class="rt">Manque de données d'observation in situ</span></div>
+      <div class="ri"><span class="rn">—</span><span class="rt">Incertitudes des modèles hydrologiques</span></div>
+      <div class="ri"><span class="rn">—</span><span class="rt">Difficultés de communication des alertes aux décideurs</span></div>
+      <div class="ri"><span class="rn">—</span><span class="rt">Impacts croissants du changement climatique</span></div>
+      <div class="ri"><span class="rn">—</span><span class="rt">Inondations urbaines et pluviales non encore couvertes par PHARES</span></div>
+    </div>
+
+    <h3 class="ss">2.3 Session 2 — Introduction et démonstration de PHARES</h3>
+    <p>Un quiz introductif a clarifié la distinction entre <strong>PHARES</strong> (la plateforme globale) et <strong>FANFAR</strong> (l'un des systèmes de prévision intégrés).</p>
+
+    <h4 class="sub">Fonctionnalités présentées</h4>
+    <div class="rl" style="margin-bottom:24px">
+      <div class="ri"><span class="rn">·</span><span class="rt">Visualisation des prévisions sur <strong>10 jours</strong>, historiques sur <strong>30 jours</strong></span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Affichage des bassins versants et stations</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Niveaux de sévérité par code couleur</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Visualisation des précipitations et des débits</span></div>
+    </div>
+
+    <div class="g2c">
+      <div>
+        <h4 class="sub">Modèles hydrologiques disponibles</h4>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Modèle</th><th>Couverture</th></tr></thead>
+          <tbody>
+            <tr><td><strong>West Africa HYPE 1.2</strong></td><td>Ensemble de l'Afrique de l'Ouest</td></tr>
+            <tr><td><strong>Niger HYPE</strong></td><td>Bassin du Niger</td></tr>
+            <tr><td><strong>Burkina HYPE</strong></td><td>Bassin du Burkina Faso</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <h4 class="sub">Niveaux de sévérité</h4>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Niveau</th><th>Code</th><th>Période de retour</th></tr></thead>
+          <tbody>
+            <tr><td>Normal</td><td><span class="sv sv-g">Vert</span></td><td>&lt; 2 ans</td></tr>
+            <tr><td>Medium</td><td><span class="sv sv-y">Jaune</span></td><td>2 à 5 ans</td></tr>
+            <tr><td>High</td><td><span class="sv sv-o">Orange</span></td><td>5 à 30 ans</td></tr>
+            <tr><td>Very High</td><td><span class="sv sv-r">Rouge</span></td><td>&gt; 30 ans</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="note">La catégorie <strong>« Disqualified »</strong> s'applique aux zones sahéliennes où les références statistiques historiques sont insuffisantes, conduisant à des alertes peu fiables.</div>
+
+    <h3 class="ss">2.4 Session 3 — Présentation technique de PHARES</h3>
+    <p><em>Intervenant : Représentant SMHI</em></p>
+    <p>Le modèle hydrologique HYPE (semi-distribué) simule l'infiltration, l'écoulement de surface, les débits aux exutoires et l'impact des barrages. Le fonctionnement de FANFAR repose sur trois étapes : <strong>reconstitution</strong> de l'état hydrologique passé, <strong>prévision</strong> future basée sur les données météorologiques, <strong>interprétation</strong> et diffusion des alertes.</p>
+
+    <h4 class="sub">Chaînes de données opérationnelles</h4>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Chaîne</th><th>Données historiques (pluie/temp.)</th><th>Prévision météo</th><th>Caractéristiques</th></tr></thead>
+      <tbody>
+        <tr><td><strong>West Africa HYPE</strong></td><td>CHIRPS / HydroGFD</td><td>ECMWF</td><td>Chaîne régionale, robuste et stable</td></tr>
+        <tr><td><strong>Niger HYPE</strong></td><td>CHIRPS / HydroGFD</td><td>ECMWF</td><td>Calibrée sur le bassin du Niger</td></tr>
+        <tr><td><strong>Burkina HYPE (ch.1)</strong></td><td>CHIRPS / HydroGFD</td><td>ECMWF</td><td>Chaîne régionale pour le Burkina</td></tr>
+        <tr><td><strong>Burkina HYPE (ch.2)</strong></td><td>CHIRPS / HydroGFD</td><td>WRF-ANAM</td><td>Données terrain nationales Burkina</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="ss">2.5 Session 4 — Exploration pratique des API</h3>
+    <p>Introduction au principe des API via la documentation interactive <strong>Swagger</strong>. Les participants ont réalisé cinq exercices pratiques.</p>
+    <div class="g2c">
+      <div>
+        <h4 class="sub">Exercices réalisés</h4>
+        <div class="rl">
+          <div class="ri"><span class="rn">01</span><span class="rt">Lister les zones de prévision disponibles</span></div>
+          <div class="ri"><span class="rn">02</span><span class="rt">Explorer le contenu d'une zone spécifique</span></div>
+          <div class="ri"><span class="rn">03</span><span class="rt">Télécharger des fichiers ZIP (observations + prévisions)</span></div>
+          <div class="ri"><span class="rn">04</span><span class="rt">Récupérer la dernière prévision disponible</span></div>
+          <div class="ri"><span class="rn">05</span><span class="rt">Générer des cartes personnalisées selon différents filtres</span></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="sub">Principaux endpoints</h4>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Endpoint</th><th>Fonction</th></tr></thead>
+          <tbody>
+            <tr><td><code>/zones</code></td><td>Lister les zones disponibles</td></tr>
+            <tr><td><code>/zones/{id}</code></td><td>Explorer une zone spécifique</td></tr>
+            <tr><td><code>/download</code></td><td>Télécharger des fichiers ZIP</td></tr>
+            <tr><td><code>/forecast/latest</code></td><td>Dernière prévision disponible</td></tr>
+            <tr><td><code>/maps</code></td><td>Générer des cartes personnalisées</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+    <div class="note"><strong>Recommandation émergente :</strong> Ajouter les points hydrologiques et bassins versants sur les cartes générées automatiquement.</div>
+  </section>
+
+  <!-- ── 3. JOURNÉE 2 ────────────────────────────────────────── -->
+  <section class="rs" id="j2">
+    <div class="eyebrow"><span>Section 3</span></div>
+    <h2 class="stitle">Journée 2 — <em>20 mai 2026</em></h2>
+    <div class="rule"></div>
+    <label class="img-zone day-photo-zone" data-id="photo-j2" title="Charger une photo de la journée 2">
+      <input type="file" accept="image/*">
+      <div class="img-ph">
+        <div class="img-ph-icon">+</div>
+        <div class="img-ph-label">Photo — Journée 2 · 20 mai 2026</div>
+        <div class="img-ph-hint">Cliquez pour charger une photo de cette journée</div>
+      </div>
+      <img class="img-preview" alt="Photo journée 2 — Atelier PHARES">
+    </label>
+    <div class="note"><strong>Contexte :</strong> Des problèmes techniques d'accès à la plateforme la veille ont conduit à adapter le programme. Cette journée a débuté par une revue complète du programme réajusté.</div>
+
+    <h3 class="ss">3.1 Session 1 — Maîtrise approfondie du portail de visualisation</h3>
+    <p><em>Présentateur : Dr Nimon</em></p>
+    <p>Cette session a couvert de façon exhaustive l'ensemble des fonctionnalités du portail. Les participants ont ensuite suivi le <strong>didacticiel disponible sur la page wiki de PHARES</strong> pour effectuer des exercices pratiques autonomes.</p>
+
+    <h4 class="sub">Fonctionnalités explorées</h4>
+    <div class="rl">
+      <div class="ri"><span class="rn">·</span><span class="rt">Accès à la plateforme et navigation générale — panneau de contrôle gauche, menu de sélection des couches, outils de navigation cartographique</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Navigation sur la carte et localisation des stations (par nom ou code pays)</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Exploration des dates de prévision et de l'historique</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Analyse d'un événement actuel ou passé</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Exploration et comparaison des modèles disponibles</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Interprétation des cartes de niveaux de sévérité et du guide d'interprétation</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Identification des zones à risque d'inondation et analyse de l'évolution de la sévérité</span></div>
+    </div>
+
+    <h4 class="sub">Précisions techniques — Structure des sous-bassins</h4>
+    <p>Le modèle HYPE étant semi-distribué, il simule l'ensemble du bassin amont mais n'affiche que le sous-bassin immédiatement drainé par la station sélectionnée. Les codes affichés sont des identifiants internes issus de la discrétisation, différents des codes stations standards.</p>
+
+    <h4 class="sub">Discussion : comparaison entre modèles</h4>
+    <p>Les modèles West Africa HYPE et Niger HYPE peuvent donner des résultats différents pour une même date (notamment au niveau de la Guinée et du Niger, vers Gaya).</p>
+    <blockquote>Avec deux modèles divergents, c'est 50-50. C'est l'expérience du prévisionniste qui entre en jeu.<cite>— Échange en session</cite></blockquote>
+    <div class="card"><div class="card-t">Suggestion technique</div><p>Rendre les deux pages de visualisation indépendantes pour comparer deux modèles côte à côte. En attendant : ouvrir deux fenêtres de navigateur. Suggestion d'afficher des <strong>indicateurs de performance historiques</strong> pour chaque modèle.</p></div>
+
+    <h3 class="ss">3.2 Session 2 &amp; 3 — API pratique et analyse R</h3>
+    <p>Les participants ont pratiqué en autonomie : accès et authentification à l'API, navigation dans la liste des données, téléchargement de fichiers spécifiques, comparaison diachronique des prévisions entre modèles.</p>
+    <p>Des scripts R ont été partagés avec les participants pour comprendre la structuration des fichiers <strong>NetCDF</strong> téléchargés depuis l'API, explorer les variables disponibles, et générer des cartes de sévérité à partir des données brutes.</p>
+
+    <h3 class="ss">3.3 Présentation de l'expérience du Burkina Faso</h3>
+    <div class="g2c">
+      <div>
+        <h4 class="sub">Réseau d'observations</h4>
+        <div class="rl">
+          <div class="ri"><span class="rn">245</span><span class="rt">Stations automatiques — données toutes les 15 minutes</span></div>
+          <div class="ri"><span class="rn">146</span><span class="rt">Stations classiques</span></div>
+          <div class="ri"><span class="rn">10</span><span class="rt">Détecteurs de foudre</span></div>
+          <div class="ri"><span class="rn">3</span><span class="rt">Stations de radiosondage</span></div>
+        </div>
+        <p style="margin-top:12px">Le service utilise le modèle <strong>WRF</strong> sur HPC, intégré dans <strong>MedWave GIS</strong>. Le bulletin quotidien est semi-automatisé : maquette pré-remplie, cartes générées automatiquement, texte validé par le prévisionniste. Objectif : 3 émissions par jour (6h, 12h, 18h) d'ici juin 2026.</p>
+      </div>
+      <div>
+        <h4 class="sub">Chaîne de diffusion nationale</h4>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Canal</th><th>Portée</th></tr></thead>
+          <tbody>
+            <tr><td>Site web (protocole CAP/RSS)</td><td>Alertes accessibles aux sites tiers</td></tr>
+            <tr><td>Facebook</td><td>150 000 abonnés — 5–6 millions de vues/mois</td></tr>
+            <tr><td>Chaîne WhatsApp</td><td>57 000 abonnés</td></tr>
+            <tr><td>Groupes WhatsApp (4 communautés)</td><td>Agents, producteurs, autorités, médias (2 000+ membres)</td></tr>
+            <tr><td>Radios locales</td><td>Traduction en langues locales, diffusion rurale</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+
+    <h3 class="ss">3.4 Discussion — Intégration des données d'observation</h3>
+    <div class="g2">
+      <div class="ni"><div class="n">01</div><h3>Stations sous-représentées</h3><p>Plusieurs pays ont des stations non intégrées (ex. la Mauritanie n'a que 3 stations intégrées au lieu de ~15). L'assimilation des données permettrait de corriger les prévisions en temps réel.</p></div>
+      <div class="ni"><div class="n">02</div><h3>Courbes d'étalage manquantes</h3><p>Les courbes d'étalage manquantes pour certaines stations empêchent la conversion débit → hauteur d'eau, information essentielle pour les alertes opérationnelles.</p></div>
+      <div class="ni"><div class="n">03</div><h3>Chaîne d'amélioration</h3><p>Les données météo d'observation doivent d'abord améliorer les sorties des modèles météorologiques (précipitations, températures) pour impacter ensuite les modèles hydrologiques.</p></div>
+      <div class="ni"><div class="n">04</div><h3>Recommandation unanime</h3><p>Les pays doivent formaliser le partage de leurs données de stations vers le système PHARES, via les mécanismes RCC et les initiatives d'assimilation en cours (ex. Burkina avec WRF).</p></div>
+    </div>
+  </section>
+
+  <!-- ── 4. JOURNÉE 3 ────────────────────────────────────────── -->
+  <section class="rs" id="j3">
+    <div class="eyebrow"><span>Section 4</span></div>
+    <h2 class="stitle">Journée 3 — <em>21 mai 2026</em></h2>
+    <div class="rule"></div>
+    <label class="img-zone day-photo-zone" data-id="photo-j3" title="Charger une photo de la journée 3">
+      <input type="file" accept="image/*">
+      <div class="img-ph">
+        <div class="img-ph-icon">+</div>
+        <div class="img-ph-label">Photo — Journée 3 · 21 mai 2026</div>
+        <div class="img-ph-hint">Cliquez pour charger une photo de cette journée</div>
+      </div>
+      <img class="img-preview" alt="Photo journée 3 — Atelier PHARES">
+    </label>
+    <p>Cette journée a mis l'accent sur la <strong>maîtrise opérationnelle</strong> : interprétation des prévisions d'inondation, analyse d'événements, et accessibilité des données via l'API. Les participants ont opéré la transition de la compréhension théorique vers l'application concrète dans leurs workflows nationaux et régionaux d'alerte précoce.</p>
+
+    <h3 class="ss">4.1 Session 1 — Approfondissement de l'écosystème API PHARES</h3>
+    <div class="g2c">
+      <div>
+        <h4 class="sub">Formats de données disponibles</h4>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Format</th><th>Usage</th></tr></thead>
+          <tbody>
+            <tr><td><strong>NetCDF</strong></td><td>Données spatiales multidimensionnelles (débits, précipitations, sévérité)</td></tr>
+            <tr><td><strong>GeoTIFF</strong></td><td>Cartes raster géoréférencées</td></tr>
+            <tr><td><strong>CSV</strong></td><td>Séries temporelles pour analyses statistiques</td></tr>
+            <tr><td><strong>JSON</strong></td><td>Intégration dans des systèmes tiers et scripts d'automatisation</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <h4 class="sub">Options de filtrage et sélection</h4>
+        <div class="rl">
+          <div class="ri"><span class="rn">·</span><span class="rt">Région géographique</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Date de prévision et délai (<em>lead time</em>)</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Modèle hydrologique sélectionné</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Type de variable (débit, précipitation, sévérité)</span></div>
+        </div>
+        <div class="card" style="margin-top:16px"><div class="card-t">Génération automatique de bulletins</div><p>Introduction à la fonctionnalité compilant résumés de prévisions, niveaux d'alerte et cartes en rapports standardisés prêts à la diffusion.</p></div>
+      </div>
+    </div>
+
+    <h3 class="ss">4.2 Session 2 — Exercices pratiques API — Accès au groupe WAS</h3>
+    <p>Les facilitateurs ont fourni les identifiants d'accès pour l'environnement API <strong>West Africa Services (WAS)</strong> hébergeant le backend PHARES. Les adresses email Google des participants ont été collectées et associées au portail d'accès API. Les participants ont <strong>testé avec succès des appels API</strong> pour récupérer des données de prévision, confirmant la connectivité et leur capacité à intégrer les sorties PHARES dans leurs propres systèmes.</p>
+
+    <h3 class="ss">4.3 Discussion — Analyse des bulletins et suggestions d'amélioration</h3>
+    <div class="g2c">
+      <div>
+        <h4 class="sub">Structure actuelle du bulletin PHARES</h4>
+        <div class="rl">
+          <div class="ri"><span class="rn">·</span><span class="rt">Sommaire exécutif</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Cartes de risque (niveaux de sévérité par bassin)</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Graphiques de débit (historique + prévision)</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Texte analytique</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Métadonnées (chaîne de prévision, date d'émission)</span></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="sub">Suggestions retenues par les participants</h4>
+        <div class="rl">
+          <div class="ri"><span class="rn" style="color:var(--rust)">✓</span><span class="rt">Section de synthèse en 2–4 phrases en tête, sans carte ni graphique</span></div>
+          <div class="ri"><span class="rn" style="color:var(--rust)">✓</span><span class="rt">Valeurs quantitatives de débit aux seuils d'alerte sur les cartes</span></div>
+          <div class="ri"><span class="rn" style="color:var(--rust)">✓</span><span class="rt">Graphique d'évolution du cumul pluviométrique depuis le début de saison</span></div>
+          <div class="ri"><span class="rn" style="color:var(--rust)">✓</span><span class="rt">Phrase introductive sur la situation météorologique générale</span></div>
+          <div class="ri"><span class="rn" style="color:var(--rust)">✓</span><span class="rt">Utilisation des prévisions WRF comme intrant complémentaire</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="note"><strong>Note :</strong> L'ajout de données de précipitation issues de PHARES dans le bulletin a fait l'objet d'une mise en garde : ces données pourraient diverger des prévisions des services météorologiques nationaux. La décision retenue est que le bulletin PHARES reste centré sur l'aspect <strong>hydrologique</strong>, chaque service conservant ses propres bulletins météo.</div>
+  </section>
+
+  <!-- ── 5. JOURNÉE 4 ────────────────────────────────────────── -->
+  <section class="rs" id="j4">
+    <div class="eyebrow"><span>Section 5</span></div>
+    <h2 class="stitle">Journée 4 — <em>Dispositif opérationnel &amp; Clôture</em></h2>
+    <div class="rule"></div>
+    <label class="img-zone day-photo-zone" data-id="photo-j4" title="Charger une photo de la journée 4">
+      <input type="file" accept="image/*">
+      <div class="img-ph">
+        <div class="img-ph-icon">+</div>
+        <div class="img-ph-label">Photo — Journée 4 · 22 mai 2026</div>
+        <div class="img-ph-hint">Cliquez pour charger une photo de cette journée</div>
+      </div>
+      <img class="img-preview" alt="Photo journée 4 — Atelier PHARES">
+    </label>
+
+    <h3 class="ss">5.1 Production automatique de bulletins</h3>
+    <p>La session a débuté à <strong>9h30</strong> avec l'exécution de la commande <code>git pull</code> pour déclencher la production automatique du bulletin. Ce bulletin peut ensuite être modifié pour aboutir à une version définitive validée par le prévisionniste.</p>
+    <p>Les points suivants ont été abordés : <strong>points focaux</strong> — déjà identifiés au niveau des services hydrologiques ; le processus est en cours pour les services météo. Les bulletins PHARES sont adressés aux États via ces points focaux, qui lancent les alertes selon la situation.</p>
+
+    <h3 class="ss">5.2 Dispositif de communication post-atelier</h3>
+    <div class="g2c">
+      <div>
+        <h4 class="sub">Groupe WhatsApp officiel</h4>
+        <div class="card"><div class="card-t">PHARES_Monitoring2026</div><p>Partage d'informations, images d'événements, résultats de monitoring hebdomadaire. Accès : tous les points focaux des SMN et services hydrologiques des pays membres.</p></div>
+        <h4 class="sub" style="margin-top:20px">Thèmes des réunions hebdomadaires</h4>
+        <div class="rl">
+          <div class="ri"><span class="rn">·</span><span class="rt">PHARES a-t-il prévu des risques d'inondation ? (chaîne, coordonnées, date)</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Le risque s'est-il matérialisé ? Débit/hauteur observée, impacts</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Coordonnées et date de l'événement</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Images d'illustration (partagées dans le groupe WhatsApp)</span></div>
+          <div class="ri"><span class="rn">·</span><span class="rt">Suggestions d'amélioration de la plateforme</span></div>
+        </div>
+      </div>
+      <div>
+        <h4 class="sub">Calendrier des réunions</h4>
+        <div class="tbl-wrap"><table>
+          <thead><tr><th>Type</th><th>Fréquence</th><th>Heure</th><th>Participants</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Réunion officielle PHARES</strong></td><td>1er mardi du mois</td><td>14h00 TU</td><td>Tous les pays membres</td></tr>
+            <tr><td><strong>Capitalisation hebdomadaire</strong></td><td>Chaque mercredi</td><td>À définir</td><td>Points focaux SMN</td></tr>
+          </tbody>
+        </table></div>
+        <div class="note" style="margin-top:12px"><strong>Recommandation :</strong> Prévoir une réunion équivalente avec les services hydrologiques (mardi), pour un suivi coordonné entre météorologie et hydrologie.</div>
+      </div>
+    </div>
+
+    <h3 class="ss">5.3 Messages Clés</h3>
+    <div class="rl">
+      <div class="ri"><span class="rn">1</span><span class="rt" style="font-size:14px">Une bonne décision dépend d'une <strong>information fiable et partagée</strong>.</span></div>
+      <div class="ri"><span class="rn">2</span><span class="rt" style="font-size:14px">PHARES renforce le <strong>passage de la donnée à l'action</strong>.</span></div>
+      <div class="ri"><span class="rn">3</span><span class="rt" style="font-size:14px">L'alerte précoce efficace repose sur la <strong>coordination des institutions</strong>.</span></div>
+      <div class="ri"><span class="rn">4</span><span class="rt" style="font-size:14px">La <strong>technologie seule ne suffit pas</strong> : la communication et l'action sont essentielles.</span></div>
+      <div class="ri"><span class="rn">5</span><span class="rt" style="font-size:14px">L'objectif final est la <strong>protection des populations</strong> et des moyens de subsistance.</span></div>
+    </div>
+
+    <h3 class="ss">5.4 Points Focaux Nationaux</h3>
+    <div class="fg">
+      <div class="fc"><div class="fc-c">Burkina Faso</div><div class="fc-i">DGRE</div></div>
+      <div class="fc"><div class="fc-c">Mali</div><div class="fc-i">DNH</div></div>
+      <div class="fc"><div class="fc-c">Mauritanie</div><div class="fc-i">SONADER</div></div>
+      <div class="fc"><div class="fc-c">Niger</div><div class="fc-i">DGH</div></div>
+      <div class="fc"><div class="fc-c">Nigeria</div><div class="fc-i">NIHSA</div></div>
+      <div class="fc"><div class="fc-c">Sénégal</div><div class="fc-i">DGPRE</div></div>
+      <div class="fc"><div class="fc-c">Tchad</div><div class="fc-i">ANAM</div></div>
+      <div class="fc"><div class="fc-c">Togo</div><div class="fc-i">DRE</div></div>
+    </div>
+
+    <h3 class="ss">5.5 Discours de clôture</h3>
+    <p>Le représentant des organisateurs a clôturé l'atelier en soulignant la qualité des échanges et la richesse des contributions, la valeur de l'approche de <strong>co-développement</strong> avec les services météorologiques nationaux (évolution par rapport au projet FANFAR antérieur), et l'invitation à poursuivre les échanges dans le groupe de travail technique dédié.</p>
+  </section>
+
+  <!-- ── 6. RECOMMANDATIONS ──────────────────────────────────── -->
+  <section class="rs" id="recos">
+    <div class="eyebrow"><span>Section 6</span></div>
+    <h2 class="stitle">Synthèse des <em>Recommandations</em></h2>
+    <div class="rule"></div>
+
+    <h3 class="ss">6.1 Recommandations techniques — Page de visualisation</h3>
+    <div class="rl">
+      <div class="reco"><span class="reco-n">01</span><span class="reco-t">Ajouter les <strong>stations manquantes</strong> (ex. Kolocopé et autres stations nationales non intégrées)</span></div>
+      <div class="reco"><span class="reco-n">02</span><span class="reco-t">Afficher le <strong>nom des stations</strong> à la place de leur identifiant (ID) pour une meilleure lisibilité</span></div>
+      <div class="reco"><span class="reco-n">03</span><span class="reco-t">Intégrer les <strong>incertitudes</strong> dans les prévisions affichées sur la plateforme</span></div>
+      <div class="reco"><span class="reco-n">04</span><span class="reco-t">Mettre le <strong>titre de chaque station</strong> de manière visible sur la carte et dans les graphiques</span></div>
+      <div class="reco"><span class="reco-n">05</span><span class="reco-t">Afficher la <strong>hauteur d'eau</strong> en plus du débit dans les données affichées</span></div>
+      <div class="reco"><span class="reco-n">06</span><span class="reco-t">Prévoir un <strong>menu déroulant</strong> pour l'affichage des épisodes historiques</span></div>
+      <div class="reco"><span class="reco-n">07</span><span class="reco-t">Revoir et harmoniser la <strong>palette de couleurs</strong> pour une meilleure interprétation visuelle</span></div>
+      <div class="reco"><span class="reco-n">08</span><span class="reco-t">Permettre la visualisation des sous-bassins de chaque pays <strong>sans passer par les API</strong> (interface simplifiée)</span></div>
+      <div class="reco"><span class="reco-n">09</span><span class="reco-t">Rajouter les <strong>limites des grands bassins</strong> ouest-africains et sahéliens sur la carte</span></div>
+      <div class="reco"><span class="reco-n">10</span><span class="reco-t">Afficher les <strong>limites des pays</strong> au-dessus des prévisions</span></div>
+      <div class="reco"><span class="reco-n">11</span><span class="reco-t">Déplacer les boîtes de sélection des chaînes de prévisions et fonds de cartes pour améliorer l'<strong>ergonomie</strong></span></div>
+      <div class="reco"><span class="reco-n">12</span><span class="reco-t">En cliquant sur une station, <strong>afficher tout le bassin amont drainé</strong></span></div>
+      <div class="reco"><span class="reco-n">13</span><span class="reco-t">Intégrer un filtre permettant de n'afficher que le <strong>pays concerné</strong> lors de la visualisation</span></div>
+    </div>
+
+    <h3 class="ss">6.2 Recommandations techniques — Bulletin</h3>
+    <div class="rl">
+      <div class="ri"><span class="rn">·</span><span class="rt">Intégrer une <strong>phrase introductive</strong> décrivant la situation météorologique générale.</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Ajouter une <strong>section de synthèse courte</strong> (2–4 phrases) en tête du bulletin, sans carte ni graphique.</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Intégrer des <strong>valeurs quantitatives de débit</strong> aux seuils d'alerte.</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt">Utiliser les prévisions du modèle <strong>WRF</strong> comme intrant complémentaire pour la production des bulletins nationaux.</span></div>
+    </div>
+
+    <h3 class="ss">6.3 Recommandations institutionnelles et opérationnelles</h3>
+    <div class="rl">
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Assimilation des données d'observation :</strong> les pays doivent formaliser le partage de données de stations vers PHARES et développer des capacités d'assimilation au niveau national, en s'appuyant sur les mécanismes RCC.</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Courbes d'étalage :</strong> développer les courbes manquantes pour permettre la conversion débit/hauteur.</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Bulletins conjoints météo-hydrologie :</strong> initier au niveau national la production de bulletins conjoints (actuellement absent dans plusieurs pays).</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Intégration de davantage de stations</strong> nationales dans le système PHARES.</span></div>
+    </div>
+
+    <h3 class="ss">6.4 Perspectives techniques</h3>
+    <div class="rl">
+      <div class="ri"><span class="rn">→</span><span class="rt">Intégrer le modèle <strong>WRF</strong> directement sur la plateforme PHARES.</span></div>
+      <div class="ri"><span class="rn">→</span><span class="rt">Intégration prochaine de la chaîne <strong>Burkina Faso</strong> dans le portail de visualisation (prévue dans les deux semaines suivant l'atelier).</span></div>
+      <div class="ri"><span class="rn">→</span><span class="rt">Poursuivre l'intégration des systèmes liés aux <strong>crues éclair</strong> et inondations pluviales.</span></div>
+      <div class="ri"><span class="rn">→</span><span class="rt">Automatisation complète de la chaîne de production des bulletins par scripts.</span></div>
+    </div>
+  </section>
+
+  <!-- ── 7. ENSEIGNEMENTS ────────────────────────────────────── -->
+  <section class="rs" id="enseign">
+    <div class="eyebrow"><span>Section 7</span></div>
+    <h2 class="stitle">Principaux <em>Enseignements</em></h2>
+    <div class="rule"></div>
+    <div class="g2">
+      <div class="ni"><div class="n">·</div><h3>Plateforme évolutive</h3><p><strong>PHARES</strong> est une plateforme évolutive et collaborative, en développement actif. <strong>FANFAR</strong> constitue le principal système opérationnel intégré pour la prévision des inondations fluviales.</p></div>
+      <div class="ni"><div class="n">·</div><h3>Potentiel des API</h3><p>Les <strong>API</strong> offrent un potentiel important pour l'automatisation de la production de cartes et de bulletins. Les participants y ont tous obtenu des accès opérationnels.</p></div>
+      <div class="ni"><div class="n">·</div><h3>Rôle de l'expérience</h3><p>L'<strong>expérience des prévisionnistes</strong> reste indispensable pour interpréter les résultats de modèles parfois divergents. La technologie seule ne suffit pas.</p></div>
+      <div class="ni"><div class="n">·</div><h3>Interdépendance météo-hydro</h3><p>La <strong>qualité des prévisions hydrologiques</strong> dépend directement de celle des prévisions météorologiques en amont. Des efforts conjoints sont nécessaires dans les deux domaines.</p></div>
+      <div class="ni"><div class="n">·</div><h3>Continuité opérationnelle</h3><p>Le dispositif post-atelier (points focaux, groupe WhatsApp, réunions régulières) garantit la <strong>continuité opérationnelle</strong> et l'amélioration continue de la plateforme en saison des pluies 2026.</p></div>
+    </div>
+  </section>
+
+  <!-- ── ANNEXES ─────────────────────────────────────────────── -->
+  <section class="rs" id="annexes">
+    <div class="eyebrow"><span>Annexes</span></div>
+    <h2 class="stitle">Documents &amp; <em>références</em></h2>
+    <div class="rule"></div>
+
+    <h3 class="ss">Annexe 1 — Institutions participantes</h3>
+    <p>Services météorologiques et hydrologiques nationaux des pays du Sahel et d'Afrique de l'Ouest, Centre Régional AGRHYMET, SMHI, Croix-Rouge, institutions partenaires du projet Sahel Résilience.</p>
+
+    <h3 class="ss">Annexe 2 — Chaînes de prévision opérationnelles</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Chaîne</th><th>Modèle hydrologique</th><th>Données historiques (pluie/temp.)</th><th>Prévision météo (pluie/temp.)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>West Africa HYPE</strong></td><td>HYPE (Afrique de l'Ouest)</td><td>CHIRPS / HydroGFD</td><td>ECMWF / ECMWF</td></tr>
+        <tr><td><strong>Niger HYPE</strong></td><td>HYPE (Niger)</td><td>CHIRPS / HydroGFD</td><td>ECMWF / ECMWF</td></tr>
+        <tr><td><strong>Burkina HYPE (ch.1)</strong></td><td>HYPE (Burkina)</td><td>CHIRPS / HydroGFD</td><td>ECMWF / ECMWF</td></tr>
+        <tr><td><strong>Burkina HYPE (ch.2)</strong></td><td>HYPE (Burkina)</td><td>CHIRPS / HydroGFD</td><td>WRF-ANAM / WRF-ANAM</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="ss">Annexe 3 — Formats de données API</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Format</th><th>Usage principal</th></tr></thead>
+      <tbody>
+        <tr><td><strong>NetCDF</strong></td><td>Données spatiales multidimensionnelles</td></tr>
+        <tr><td><strong>GeoTIFF</strong></td><td>Cartes raster géoréférencées</td></tr>
+        <tr><td><strong>CSV</strong></td><td>Séries temporelles</td></tr>
+        <tr><td><strong>JSON</strong></td><td>Intégration dans systèmes tiers</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="ss">Annexe 4 — Ressources disponibles</h3>
+    <div class="rl">
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Wiki PHARES</strong> : didacticiels, guide d'interprétation des niveaux de sévérité, description des chaînes de prévision, documentation API (disponible en français et en anglais)</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Scripts R</strong> : partagés lors de l'atelier pour l'analyse des fichiers NetCDF</span></div>
+      <div class="ri"><span class="rn">·</span><span class="rt"><strong>Commande <code>git pull</code></strong> : pour déclencher la production automatique du bulletin</span></div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────── -->
+  <div class="doc-footer">
+    <span class="doc-footer-l">AGRHYMET · SMHI — Atelier PHARES, Lomé 2026</span>
+    <span class="doc-footer-r">Fin du rapport · Lomé, 22 mai 2026</span>
+  </div>
+
+</div>
+
+<script>
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.querySelector(a.getAttribute('href'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+// Image upload zones — persist via localStorage
+document.querySelectorAll('.img-zone').forEach(function(zone){
+  var id = zone.dataset.id;
+  if(!id) return;
+  var input   = zone.querySelector('input[type=file]');
+  var ph      = zone.querySelector('.img-ph');
+  var preview = zone.querySelector('.img-preview');
+  if(!input || !preview) return;
+
+  function hideOpt(){
+    var prev = zone.previousElementSibling;
+    if(prev && prev.classList.contains('img-opt')) prev.style.display = 'none';
+  }
+
+  function showPreview(src){
+    ph.style.display = 'none';
+    preview.style.display = 'block';
+    preview.src = src;
+    zone.classList.add('has-image');
+    hideOpt();
+  }
+
+  try {
+    var saved = localStorage.getItem('phares-img-' + id);
+    if(saved) showPreview(saved);
+  } catch(e){}
+
+  input.addEventListener('change', function(){
+    var file = this.files[0];
+    if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(e){
+      showPreview(e.target.result);
+      try { localStorage.setItem('phares-img-' + id, e.target.result); } catch(err){}
+    };
+    reader.readAsDataURL(file);
+  });
+
+  preview.addEventListener('click', function(e){
+    e.stopPropagation();
+    input.click();
+  });
+});
+
+// ── PDF EXPORT via browser native print ──────────────────────────────────────
+// window.print() renders text as true PDF vectors — no quality loss.
+function downloadPDF() {
+  document.getElementById('print-modal').style.display = 'flex';
+}
+
+function doPrint() {
+  document.getElementById('print-modal').style.display = 'none';
+  window.print();
+}
+</script>
+
+<!-- Print instruction modal -->
+<div id="print-modal" style="display:none">
+  <div class="pm-box">
+    <h3>Exporter en PDF</h3>
+    <p>Dans la fenêtre d'impression Chrome, configure ces options :</p>
+    <ol class="pm-steps">
+      <li>Destination → <strong>Enregistrer en PDF</strong></li>
+      <li>Cliquer sur <strong>Plus de paramètres</strong></li>
+      <li>Décocher <strong>En-têtes et pieds de page</strong> <em>(supprime l'URL et la date)</em></li>
+      <li>Cocher <strong>Graphiques d'arrière-plan</strong> <em>(conserve les couleurs crème)</em></li>
+    </ol>
+    <div class="pm-btns">
+      <button class="pm-go" onclick="doPrint()">Ouvrir l'impression →</button>
+      <button class="pm-cancel" onclick="document.getElementById('print-modal').style.display='none'">Annuler</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
