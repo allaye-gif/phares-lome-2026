@@ -444,7 +444,7 @@ h2.stitle,h3.ss,h4.sub{break-after:avoid;page-break-after:avoid}
 <header class="top">
   <span class="top-l">AGRHYMET<span class="dot">·</span>SMHI</span>
   <span class="top-r">Atelier PHARES<span class="dot">·</span>19–22 mai 2026<span class="dot">·</span>Lomé, Togo</span>
-  <div style="display:flex;gap:8px;margin-left:20px">
+  <div id="top-btns" style="display: none; gap: 8px; margin-left: 20px;">
     <a href="presentation.html" style="font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--dark);border:1px solid var(--border);padding:7px 14px;text-decoration:none;border-radius:2px;white-space:nowrap;display:inline-flex;align-items:center;gap:6px" onmouseover="this.style.borderColor='var(--rust)';this.style.color='var(--rust)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--dark)'">▶ Présentation</a>
     <button class="print-btn" id="pdf-btn" onclick="downloadPDF()">↓ Exporter PDF</button>
     <button class="print-btn" id="gh-btn" onclick="document.getElementById('gh-modal').style.display='flex'" style="background:var(--rust)">↑ Publier</button>
@@ -1106,7 +1106,13 @@ function buildStandaloneHTML() {
   document.getElementById('print-modal').style.display = 'none';
   document.getElementById('gh-modal').style.display = 'none';
   document.getElementById('gh-token').value = '';
-  return '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  // Hide editing controls so the published version is a clean read-only report
+  var topBtns = document.getElementById('top-btns');
+  topBtns.style.display = 'none';
+  var html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  // Restore controls for the local editing session
+  topBtns.style.display = 'flex';
+  return html;
 }
 
 async function publishToGitHub() {
